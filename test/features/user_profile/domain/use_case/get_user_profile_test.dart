@@ -4,6 +4,7 @@ import 'package:my_tdd_app/features/user_profile/domain/entities/user.dart';
 import 'package:my_tdd_app/features/user_profile/domain/repositories/user_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:my_tdd_app/features/user_profile/domain/use_cases/get_user_profile.dart';
 
 class MockUserRepository extends Mock implements UserRepository {}
 
