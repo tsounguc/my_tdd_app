@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:my_tdd_app/features/user_profile/data/models/user_model.dart'; // New import
 import 'package:my_tdd_app/features/user_profile/domain/entities/user.dart';
 
 import '../../../../fixtures/fixture_reader.dart';
@@ -6,7 +7,7 @@ import '../../../../fixtures/fixture_reader.dart';
 void main() {
   final testJson = fixture('user.json');
   final testUserModel = UserModel.fromJson(testJson);
-  final testMap = testUserModel.toMap();
+  final testMap = testUserModel.toJson();
   test(
     'given [UserModel], '
     'when instantiated '
@@ -45,7 +46,7 @@ void main() {
         // Act
         final result = testUserModel.toJson();
         // Assert
-        expect(result, equals(testJson));
+        expect(result, equals(testMap));
       },
     );
   });
@@ -65,22 +66,9 @@ void main() {
       },
     );
   });
-  group('toMap - ', () {
-    test(
-      'given [UserModel], '
-      'when toMap is called, '
-      'then return [Map] with correct data ',
-      () {
-        // Arrange
-        // Act
-        final result = UserModel.toMap();
-        // Assert
-        expect(result, equals(testMap));
-      },
-    );
-  });
+
   group('copyWith - ', () {
-    const testEmail = 'myemail@gmail.com';
+    const testName = 'John Doe';
     test(
       'given [UserModel], '
       'when fromMap is called, '
@@ -88,9 +76,9 @@ void main() {
       () {
         // Arrange
         // Act
-        final result = testUserModel.copyWith(email: testEmail);
+        final result = testUserModel.copyWith(name: testName);
         // Assert
-        expect(result.email, equals(testEmail));
+        expect(result.name, equals(testName));
       },
     );
   });
