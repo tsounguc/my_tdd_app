@@ -27,13 +27,13 @@ void main() {
       expect(repositoryImpl, isA<UserRepository>());
     },
   );
-  group('fetchUserById - ', () {
+  group('getUserById - ', () {
     const testModel = UserModel(id: 1, name: 'John Doe');
     final testException = Exception('message');
     final testFailure = Failure(testException.toString());
     test(
       'given UserRepositoryImpl '
-      'when [UserRepositoryImpl.fetchUserById] is called '
+      'when [UserRepositoryImpl.getUserById] is called '
       'then return [User] ',
       () async {
         // Arrange
@@ -56,7 +56,7 @@ void main() {
 
     test(
       'given UserRepositoryImpl '
-      'when [UserRepositoryImpl.fetchUserById] is called '
+      'when [UserRepositoryImpl.getUserById] is called '
       'and remote data source call unsuccessful '
       'then return [Failure] ',
       () async {
