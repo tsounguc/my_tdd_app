@@ -19,7 +19,7 @@ Future<void> setUpDependencies() async {
   serviceLocator.registerLazySingleton<UserRepository>(() => UserRepositoryImpl(serviceLocator()));
 
   // Data sources
-  serviceLocator.registerLazySingleton<UserRemoteDataSource>(() => UserRemoteDataSourceImpl());
+  serviceLocator.registerLazySingleton<UserRemoteDataSource>(() => UserRemoteDataSourceImpl(serviceLocator()));
 
   // External dependencies
   serviceLocator.registerLazySingleton(() => Client.new);
